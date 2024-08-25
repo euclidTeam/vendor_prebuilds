@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      ACCESS_TOKEN: ${{ secrets.TOKEN }}
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
     steps:
       - name: Checkout Repository
@@ -78,9 +78,8 @@ jobs:
 
       - name: Commit Changes
         run: |
-          git config --local user.email "droidxuibot@gmail.com"
-          git config --local user.name "TheDroidxBot"
-          curl -sL "https://raw.githubusercontent.com/hipexscape/Scripts/tsm/commit_id.sh" | bash
+          git config --local user.email "euclidosbot@gmail.com"
+          git config --local user.name "EuclisOS-Bot"
 
           if [ -n "$(git status --porcelain)" ]; then
             UPDATED_APPS=$(echo $UPDATED_APPS | sed 's/,$//')
@@ -93,4 +92,4 @@ jobs:
       - name: Push Changes
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ env.ACCESS_TOKEN }}
+          github_token: ${{ env.GH_TOKEN }}
