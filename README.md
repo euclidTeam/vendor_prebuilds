@@ -11,3 +11,11 @@ Add the following line to your device's droidx_device.mk file:
 ```bash
 TARGET_BUILD_DOTGALLERY := true
 ```
+
+To Include BCR:
+---------------------
+
+Add the following line to your device's droidx_device.mk file:
+```bash
+TARGET_BUILD_BCR := true
+```
