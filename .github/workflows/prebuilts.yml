@@ -22,6 +22,9 @@ jobs:
           distribution: "adopt"
           java-version: "11"
 
+      - name: Install Git LFS
+        run: git lfs install
+
       - name: Download DotGallery APK
         uses: robinraju/release-downloader@v1.8
         with:
@@ -75,6 +78,12 @@ jobs:
             echo "No apps updated, skipping further steps."
             exit 0
           fi
+
+      - name: Track APKs using Git LFS
+        run: |
+          find . -type f -name "*.apk" -exec git lfs track {} \;
+          git add .gitattributes
+          git lfs ls-files
 
       - name: Commit Changes
         run: |
